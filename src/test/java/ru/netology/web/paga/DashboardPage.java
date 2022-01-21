@@ -51,7 +51,7 @@ public class DashboardPage {
         return text;
     }
 
-    public SelenideElement showDashboardMessage() {
-        return $("[data-test-id='dashboard']").shouldHave(Condition.exactText("Личный кабинет"));
+    public void showDashboardMessage() {
+        $("[data-test-id='dashboard']").shouldHave(Condition.exactText("Личный кабинет"));
     }
 }

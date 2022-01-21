@@ -26,11 +26,11 @@ public class TransferPage {
         cancelButton.click();
     }
 
-    public SelenideElement showAlertMessage() {
-        return $(withText("Ошибка!")).shouldHave(Condition.visible);
+    public void showAlertMessage() {
+        $(withText("Ошибка!")).shouldHave(Condition.visible);
     }
 
-    public SelenideElement showErrorMessage() {
-        return $(withText("У вас недостаточно средств для перевода такой суммы")).shouldBe(Condition.visible);
+    public void showErrorMessage() {
+        $(withText("У вас недостаточно средств для перевода такой суммы")).shouldBe(Condition.visible);
     }
 }
