@@ -28,11 +28,11 @@ class MoneyTransferTest {
         val dashboard = verificationPage.validVerify(verificationCode);
         val cardBalanceFirst = dashboard.getFirstCardBalance();
         val cardBalanceSecond = dashboard.getSecondCardBalance();
-        val cardInfo = DataHelper.Card.getSecondCardInfo();
+        val cardInfo = DataHelper.getSecondCardInfo();
         val transferMoney = dashboard.firstCardRefillButtonClick();
         transferMoney.transfer(cardInfo, amount);
-        val cardBalanceAfterSendFirst = DataHelper.Card.cardBalanceAfterGetMoney(cardBalanceFirst, amount);
-        val cardBalanceAfterSendSecond = DataHelper.Card.cardBalanceAfterSendMoney(cardBalanceSecond, amount);
+        val cardBalanceAfterSendFirst = DataHelper.cardBalanceAfterGetMoney(cardBalanceFirst, amount);
+        val cardBalanceAfterSendSecond = DataHelper.cardBalanceAfterSendMoney(cardBalanceSecond, amount);
         assertEquals(cardBalanceAfterSendFirst, dashboard.getFirstCardBalance());
         assertEquals(cardBalanceAfterSendSecond, dashboard.getSecondCardBalance());
     }
@@ -47,11 +47,11 @@ class MoneyTransferTest {
         val dashboard = verificationPage.validVerify(verificationCode);
         val cardBalanceFirst = dashboard.getFirstCardBalance();
         val cardBalanceSecond = dashboard.getSecondCardBalance();
-        val cardInfo = DataHelper.Card.getFirstCardInfo();
+        val cardInfo = DataHelper.getFirstCardInfo();
         val transferMoney = dashboard.secondCardRefillButtonClick();
         transferMoney.transfer(cardInfo, amount);
-        val cardBalanceAfterSendFirst = DataHelper.Card.cardBalanceAfterSendMoney(cardBalanceFirst, amount);
-        val cardBalanceAfterSendSecond = DataHelper.Card.cardBalanceAfterGetMoney(cardBalanceSecond, amount);
+        val cardBalanceAfterSendFirst = DataHelper.cardBalanceAfterSendMoney(cardBalanceFirst, amount);
+        val cardBalanceAfterSendSecond = DataHelper.cardBalanceAfterGetMoney(cardBalanceSecond, amount);
         assertEquals(cardBalanceAfterSendFirst, dashboard.getFirstCardBalance());
         assertEquals(cardBalanceAfterSendSecond, dashboard.getSecondCardBalance());
     }
@@ -64,7 +64,7 @@ class MoneyTransferTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         val dashboard = verificationPage.validVerify(verificationCode);
-        val cardInfo = DataHelper.Card.getFirstCardInfo();
+        val cardInfo = DataHelper.getFirstCardInfo();
         val transferMoney = dashboard.firstCardRefillButtonClick();
         transferMoney.transferCancel(cardInfo, amount);
         dashboard.showDashboardMessage();
@@ -78,7 +78,7 @@ class MoneyTransferTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         val dashboard = verificationPage.validVerify(verificationCode);
-        val cardInfo = DataHelper.Card.getWrongCardInfo();
+        val cardInfo = DataHelper.getWrongCardInfo();
         val transferMoney = dashboard.firstCardRefillButtonClick();
         transferMoney.transfer(cardInfo, amount);
         transferMoney.showAlertMessage();
@@ -92,7 +92,7 @@ class MoneyTransferTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         val dashboard = verificationPage.validVerify(verificationCode);
-        val cardInfo = DataHelper.Card.getSecondCardInfo();
+        val cardInfo = DataHelper.getSecondCardInfo();
         val transferMoney = dashboard.firstCardRefillButtonClick();
         transferMoney.transfer(cardInfo, amount);
         transferMoney.showErrorMessage();
